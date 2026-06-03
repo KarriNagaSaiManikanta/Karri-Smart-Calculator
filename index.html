@@ -204,33 +204,44 @@ white-space: nowrap;
         </div>
     </section>
     <script>
-       let display = '';
+      let display = '';
 
-function cal(value){
+function cal(value) {
+
+  // multiply symbol fix
+  if (value === '×') {
+    value = '*';
+  }
+
+  // divide symbol optional fix
+  if (value === '÷') {
+    value = '/';
+  }
 
   display += value;
 
   document.getElementById('enter').innerHTML = display;
 }
 
-function result(){
-
-  display = eval(display);
-
-  document.getElementById('enter').innerHTML = display;
+function result() {
+  try {
+    display = eval(display); // calculate result safely
+    document.getElementById('enter').innerHTML = display;
+  } catch (error) {
+    document.getElementById('enter').innerHTML = "Error";
+    display = '';
+  }
 }
 
-function del(){
+function del() {
+  display = display.slice(0, -1);
 
-  display = display.slice(0,-1);
-
-  document.getElementById('enter').innerHTML = display;
+  document.getElementById('enter').innerHTML =
+    display === '' ? '0' : display;
 }
 
-function clearAll(){
-
+function clearAll() {
   display = '';
-
   document.getElementById('enter').innerHTML = '0';
 }
         
