@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Karri Smart Calculator</title>
+    <style>
+      body {
+        background-color: black;
+        color: white;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+      }
+      .title {
+        width: 100%;
+        margin-top: 50px;
+      }
+      .title h1 {
+        text-align: center;
+      }
+      .num {
+        /* background-color: white; */
+        color: black;
+        border-radius: 10px;
+        /* width: 100px; */
+        height: 80px;
+        /* margin-top: 30px; */
+      }
+      .num button {
+        width: 100%;
+        height: 80%;
+        border-radius: 10px;
+        text-align: center;
+      }
+      button:hover {
+        cursor: pointer;
+      }
+      .container {
+        width: 50%;
+        height: 500px;
+        margin-top: 10px;
+        margin-left: 400px;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(5, 1fr);
+        /* direction: ltr; */
+        gap: 0px;
+        /* direction: rtl; */
+        padding: 10px 20px 20px 5px;
+        align-items: center;
+        justify-content: center;
+      }
+      /* .num #num0 {
+        margin-right: 150px;
+        width: 250px;
+      } */
+      /* .num #point {
+        margin-right: 150px;
+      }
+      .num #divide {
+        margin-right: 150px;
+      } */
+      /* .num #equal{
+        height: 180px;
+      } */
+      .num0 {
+        grid-column: 1/4;
+       
+      }
+      .main{
+        display: flex;
+        flex-direction: column;
+      }
+
+  .numbers{
+    background-color: aqua;
+     width: 500px;
+        height: 100px;
+        margin-top: 60px;
+        margin-left: 500px;
+       text-align: right;
+  }
+
+/* ----------------------- */
+@media screen and (max-width: 768px) {
+  .container {
+    width: 100%;
+    gap: 10px;
+    margin: 0px;
+    padding: 0px;
+  }
+   .numbers {
+    width: 70%;
+    /* gap: 10px; */
+    margin: 20px 50px;
+    padding: 0px;
+  }
+  .numbers2{
+    /* margin: 20px 20px ; */
+    text-align: right;
+    width: 100%;
+   overflow-x: auto;
+white-space: nowrap;
+.hi{
+  text-align: right;
+    width: 100%;
+   overflow-x: auto;
+white-space: nowrap;   
+}
+/* #enter{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+} */
+  }
+
+  .num {
+    height: 60px;
+    text-align: center;
+  }
+
+  .num button {
+    font-size: rem;
+  }
+}
+
+    </style>
+  </head>
+  <body>
+    <header class="head">
+      <div class="title">
+        <h1>Make Your Calculations Easy</h1>
+      </div>
+    </header>
+    <section>
+        <div class="main">
+            <div class="numbers">
+             <div class="numbers2">
+<h1 id="enter">0</h1>
+             </div>
+        </div>
+      <div class="container">
+        <div class="num">
+          <button onclick="cal(7)"><h1>7</h1></button>
+        </div>
+        <div class="num">
+          <button onclick="cal(8)"><h1>8</h1></button>
+        </div>
+
+        <div class="num">
+          <button onclick="cal(9)"><h1>9</h1></button>
+        </div>
+        <div class="num">
+          <button onclick="cal('×')"><h1>×</h1></button>
+        </div>
+        <div class="num">
+          <button onclick="clearAll()"><h1>c</h1></button>
+        </div>
+
+        <div class="num">
+          <button onclick="cal(4)"><h1>4</h1></button>
+        </div>
+        <div class="num">
+          <button onclick="cal(5)"><h1>5</h1></button>
+        </div>
+        <div class="num">
+          <button onclick="cal(6)"><h1>6</h1></button>
+        </div>
+        <div class="num">
+          <button onclick="cal('-')"><h1>-</h1></button>
+        </div>
+        <div class="num">
+          <button onclick="del()"><h1>Del</h1></button>
+        </div>
+
+        <div class="num">
+          <button onclick="cal(1)"><h1>1</h1></button>
+        </div>
+        <div class="num">
+          <button onclick="cal(2)"><h1>2</h1></button>
+        </div>
+        <div class="num">
+          <button onclick="cal(3)"><h1>3</h1></button>
+        </div>
+        <div class="num">
+          <button onclick="cal('+')"><h1>+</h1></button>
+        </div>
+       <div class="num equal">
+  <button onclick="result()"><h1>=</h1></button>
+</div>
+
+        <div class="num num0">
+          <button onclick="cal(0)"><h1>0</h1></button>
+        </div>
+        <div class="num">
+          <button onclick="cal('.')" id="point"><h1>.</h1></button>
+        </div>
+        <div class="num">
+          <button onclick="cal('/')" id="divide"><h1>÷</h1></button>
+        </div>
+      </div>
+        </div>
+    </section>
+    <script>
+       let display = '';
+
+function cal(value){
+
+  display += value;
+
+  document.getElementById('enter').innerHTML = display;
+}
+
+function result(){
+
+  display = eval(display);
+
+  document.getElementById('enter').innerHTML = display;
+}
+
+function del(){
+
+  display = display.slice(0,-1);
+
+  document.getElementById('enter').innerHTML = display;
+}
+
+function clearAll(){
+
+  display = '';
+
+  document.getElementById('enter').innerHTML = '0';
+}
+        
+        
+         
+          
+        
+    </script>
+  </body>
+</html>
